@@ -18,6 +18,7 @@ public class hooks extends env {
         capabilities.setCapability("udid", "emulator-5554");
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("platformVersion", "12");
+//        capabilities.setCapability("app", "src/test/resources/apk/Android-NativeDemoApp-0.4.0.apk");
         capabilities.setCapability("appPackage", "com.wdiodemoapp");
         capabilities.setCapability("appActivity", "com.wdiodemoapp.MainActivity");
 
