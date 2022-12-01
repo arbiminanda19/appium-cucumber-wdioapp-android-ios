@@ -10,6 +10,6 @@ import org.junit.runner.RunWith;
         glue = "stepDef",
         plugin = {"html:target/HTML_report.html"}
 )
-public class runFindRobot {
+public class runFindHiddenRobot {
 
 }

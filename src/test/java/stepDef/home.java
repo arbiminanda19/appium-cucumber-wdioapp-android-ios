@@ -12,12 +12,10 @@ import java.net.MalformedURLException;
 public class home extends hooks {
 
     pageHome pageHome = new pageHome();
-    public int duration = 10;
 
     @Given("user is on app home")
     public void user_is_on_app_home() throws MalformedURLException {
         before();
-        WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageHome.getPage_home())
         );

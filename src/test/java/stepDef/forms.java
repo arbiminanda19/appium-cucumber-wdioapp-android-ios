@@ -13,11 +13,9 @@ import java.util.List;
 public class forms extends hooks {
 
     pageForm pageForm = new pageForm();
-    public int duration = 10;
 
     @And("user fill input field")
     public void user_fill_input_field() {
-        WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageForm.getTxt_input())
         );
@@ -36,7 +34,6 @@ public class forms extends hooks {
     @And("user choose dropdown field")
     public void user_choose_dropdown_field() {
         driver.findElement(pageForm.getBtn_dropdown()).click();
-        WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageForm.getBtn_dropdownOptions())
         );
@@ -49,7 +46,6 @@ public class forms extends hooks {
     }
     @And("user click ok")
     public void user_click_ok() {
-        WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageForm.getBtn_okOnModal())
         );

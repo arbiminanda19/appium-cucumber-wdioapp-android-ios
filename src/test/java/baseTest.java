@@ -17,14 +17,14 @@ public class baseTest {
 
     public static void main(String[] args) throws MalformedURLException, InterruptedException {
         capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", "MI 8 Lite");
-        capabilities.setCapability("udid", "4f53ee03");
+        capabilities.setCapability("deviceName", "Pixel_3a_API_32_arm64-v8a");
+        capabilities.setCapability("udid", "emulator-5554");
         capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("platformVersion", "9");
-//          capabilities.setCapability("app", "/Users/flp-9-muhammadminanda/Downloads/wdiodemo.apk");
+        capabilities.setCapability("platformVersion", "12");
+//        capabilities.setCapability("app", "src/test/resources/apk/Android-NativeDemoApp-0.4.0.apk");
         capabilities.setCapability("appPackage", "com.wdiodemoapp");
         capabilities.setCapability("appActivity", "com.wdiodemoapp.MainActivity");
-
+        
         URL url = new URL("http://127.0.0.1:4723/wd/hub");
         driver = new AndroidDriver(url, capabilities);
 

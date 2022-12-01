@@ -9,11 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class swipe extends hooks {
 
     pageSwipe pageSwipe = new pageSwipe();
-    public int duration = 10;
 
     @And("user click on Js foundation menu")
     public void user_click_on_js_foundation_menu() {
-        WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageSwipe.getPage_swipe())
         );
@@ -22,7 +20,6 @@ public class swipe extends hooks {
 
     @And("user found robot")
     public void user_found_robot() {
-        WebDriverWait wait = new WebDriverWait(driver, duration);
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageSwipe.getPage_swipe())
         );
