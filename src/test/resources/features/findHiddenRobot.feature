@@ -1,6 +1,6 @@
-Feature: Find Robot
+Feature: Find Hidden Robot
 
-  Scenario: Find Robot
+  Scenario: Find Hidden Robot
 
     Given user is on app home
     When user access swipe page
