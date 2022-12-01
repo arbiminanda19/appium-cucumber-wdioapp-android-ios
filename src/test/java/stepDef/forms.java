@@ -36,6 +36,10 @@ public class forms extends hooks {
     @And("user choose dropdown field")
     public void user_choose_dropdown_field() {
         driver.findElement(pageForm.getBtn_dropdown()).click();
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(pageForm.getBtn_dropdownOptions())
+        );
         List<WebElement> dropdownOptions = driver.findElements(pageForm.getBtn_dropdownOptions());
         dropdownOptions.get(1).click();
     }
@@ -45,6 +49,10 @@ public class forms extends hooks {
     }
     @And("user click ok")
     public void user_click_ok() {
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(
+                ExpectedConditions.visibilityOfElementLocated(pageForm.getBtn_okOnModal())
+        );
         driver.findElement(pageForm.getBtn_okOnModal()).click();
     }
 

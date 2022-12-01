@@ -9,7 +9,7 @@ public class pageSwipe {
     By page_swipe = By.xpath("//android.widget.ScrollView[@content-desc='Swipe-screen']");
     By icon_robot = By.xpath("//android.widget.ImageView[@content-desc='WebdriverIO logo']");
     By scroll_toJsFoundation = MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).setAsHorizontalList().scrollIntoView(textContains(\"JS.FOUNDATION\"))");
-    By scroll_toRobot = MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(descriptionContains(\"" + "WebdriverIO logo" + "\"))");
+    By scroll_toRobot = MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(descriptionContains(\"WebdriverIO logo\"))");
 
     public By getPage_swipe() {
         return page_swipe;

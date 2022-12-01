@@ -6,7 +6,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class env {
 
-//    public static AndroidDriver driver;
-//    public static DesiredCapabilities capabilities;
+    public static AppiumDriver driver;
+    public static DesiredCapabilities capabilities;
 
 }

@@ -12,9 +12,6 @@ import java.net.URL;
 
 public class hooks extends env {
 
-    public static AppiumDriver driver;
-    public static DesiredCapabilities capabilities;
-
     public void before() throws MalformedURLException {
         capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "Pixel_3a_API_32_arm64-v8a");
