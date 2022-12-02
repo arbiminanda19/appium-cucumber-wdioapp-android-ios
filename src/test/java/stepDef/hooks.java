@@ -21,7 +21,7 @@ public class hooks extends env {
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("platformVersion", "12");
 //        capabilities.setCapability("app", "src/test/resources/apk/Android-NativeDemoApp-0.4.0.apk");
-        capabilities.setCapability("appPackage", "\"" + appPackage + "\"");
+        capabilities.setCapability("appPackage", "com.wdiodemoapp");
         capabilities.setCapability("appActivity", "com.wdiodemoapp.MainActivity");
 
         URL url = new URL(baseUrl);
