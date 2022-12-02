@@ -21,10 +21,10 @@ public class hooks extends env {
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("platformVersion", "12");
 //        capabilities.setCapability("app", "src/test/resources/apk/Android-NativeDemoApp-0.4.0.apk");
-        capabilities.setCapability("appPackage", "com.wdiodemoapp");
+        capabilities.setCapability("appPackage", "\"" + appPackage + "\"");
         capabilities.setCapability("appActivity", "com.wdiodemoapp.MainActivity");
 
-        URL url = new URL("http://127.0.0.1:4723/wd/hub");
+        URL url = new URL(baseUrl);
         driver = new AndroidDriver(url, capabilities);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, duration);
