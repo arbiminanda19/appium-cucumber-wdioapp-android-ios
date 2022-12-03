@@ -8,11 +8,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class forms extends hooks {
 
     pageForm pageForm = new pageForm();
+    HashMap<String, Object> scrollObject = new HashMap<>();
 
     @And("user fill input field")
     public void user_fill_input_field() {
@@ -22,23 +25,25 @@ public class forms extends hooks {
         String input = "testt";
         String inputResult;
         driver.findElement(pageForm.getTxt_input()).sendKeys(input);
-        inputResult = driver.findElement(pageForm.getTxt_inputResult()).getAttribute("text");
-        Assert.assertEquals(inputResult, input);
+        List <WebElement> txt_inputResult = driver.findElements(pageForm.getTxt_inputResult());
+        inputResult = txt_inputResult.get(txt_inputResult.size()-1).getAttribute("name");
+        Assert.assertEquals(inputResult, "Input field: You have typed: " + input);
+        if (driver.findElements(pageForm.getBtn_returnKeyboard()).size() > 0) {
+            driver.findElement(pageForm.getBtn_returnKeyboard()).click();
+        }
     }
     @And("user change switch state")
     public void user_change_switch_state() {
         driver.findElement(pageForm.getBtn_switch()).click();
-        Boolean btn_status = Boolean. parseBoolean(driver.findElement(pageForm.getBtn_switch()).getAttribute("checked"));
-        Assert.assertTrue(btn_status);
+        scrollObject.put("direction", "down");
+        scrollObject.put("name", "button-Active");
+        driver.executeScript("mobile:scroll", scrollObject);
     }
     @And("user choose dropdown field")
     public void user_choose_dropdown_field() {
         driver.findElement(pageForm.getBtn_dropdown()).click();
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(pageForm.getBtn_dropdownOptions())
-        );
-        List<WebElement> dropdownOptions = driver.findElements(pageForm.getBtn_dropdownOptions());
-        dropdownOptions.get(1).click();
+        driver.findElement(pageForm.getBtn_dropdownOptions()).sendKeys("Appium is awesome");
+        driver.findElement(pageForm.getBtn_doneDropdown()).click();
     }
     @And("user click active button")
     public void user_click_active_button() {

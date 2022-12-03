@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 
 public class pageHome {
 
-    By btn_swipe = By.xpath("//android.widget.Button[@content-desc='Swipe']");
-    By btn_form = By.xpath("//android.widget.Button[@content-desc='Forms']");
-    By page_home = By.xpath("//android.widget.ScrollView[@content-desc='Home-screen']");
+    By btn_swipe = By.xpath("//XCUIElementTypeButton[@name='Swipe']");
+    By btn_form = By.xpath("//XCUIElementTypeButton[@name='Forms']");
+    By page_home = By.xpath("//XCUIElementTypeOther[@name='WEBDRIVER Demo app for the appium-boilerplate']");
 
     public By getBtn_swipe() {
         return btn_swipe;
