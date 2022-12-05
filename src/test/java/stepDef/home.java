@@ -9,13 +9,12 @@ import objects.pageHome;
 
 import java.net.MalformedURLException;
 
-public class home extends hooks {
+public class home extends env {
 
     pageHome pageHome = new pageHome();
 
     @Given("user is on app home")
     public void user_is_on_app_home() throws MalformedURLException {
-        before();
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageHome.getPage_home())
         );

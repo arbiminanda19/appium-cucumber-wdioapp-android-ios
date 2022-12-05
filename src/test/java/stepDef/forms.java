@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class forms extends hooks {
+public class forms extends env {
 
     pageForm pageForm = new pageForm();
     HashMap<String, Object> scrollObject = new HashMap<>();

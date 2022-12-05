@@ -1,11 +1,9 @@
 package stepDef;
 
 import config.env;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-import org.junit.After;
-import org.junit.Before;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -15,6 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class hooks extends env {
 
+    @Before
     public void before() throws MalformedURLException {
         capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "iPhone SE (3rd generation)");

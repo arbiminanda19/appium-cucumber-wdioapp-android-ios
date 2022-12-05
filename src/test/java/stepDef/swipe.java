@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.HashMap;
 
-public class swipe extends hooks {
+public class swipe extends env {
 
     pageSwipe pageSwipe = new pageSwipe();
     HashMap<String, Object> scrollObject = new HashMap<>();
