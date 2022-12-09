@@ -2,41 +2,25 @@ package stepDef;
 
 import config.env;
 import io.cucumber.java.en.And;
-import objects.pageSwipe;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import objects.pageDrag;
+import org.openqa.selenium.WebElement;
 
-import java.util.HashMap;
+import io.appium.java_client.TouchAction;
+import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
+import static io.appium.java_client.touch.offset.ElementOption.element;
 
-public class swipe extends env {
+import static java.time.Duration.ofSeconds;
 
-    pageSwipe pageSwipe = new pageSwipe();
-    HashMap<String, Object> scrollObject = new HashMap<>();
+public class drag extends env {
 
-    @And("user click on Js foundation menu")
-    public void user_click_on_js_foundation_menu() {
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(pageSwipe.getPage_swipe())
-        );
-        scrollObject.put("direction", "left");
-        scrollObject.put("name", "JS.FOUNDATION");
-        driver.executeScript("mobile:swipe", scrollObject);
-        Boolean isButtonVisible = Boolean.parseBoolean(driver.findElement(pageSwipe.getBtn_JsFoundation()).getAttribute("visible"));
-        while (!isButtonVisible) {
-            driver.executeScript("mobile:swipe", scrollObject);
-            isButtonVisible = Boolean.parseBoolean(driver.findElement(pageSwipe.getBtn_JsFoundation()).getAttribute("visible"));
-        }
-        driver.findElement(pageSwipe.getBtn_JsFoundation()).click();
-    }
+    TouchAction touch = new TouchAction(driver);
 
-    @And("user found robot")
-    public void user_found_robot() {
-        wait.until(
-                ExpectedConditions.visibilityOfElementLocated(pageSwipe.getPage_swipe())
-        );
-        scrollObject.put("direction", "down");
-        scrollObject.put("name", "WebdriverIO logo");
-        driver.executeScript("mobile:scroll", scrollObject);
-        driver.findElement(pageSwipe.getIcon_robot()).isDisplayed();
+    pageDrag pageDrag = new pageDrag();
+
+    @And("user drag and drop object")
+    public void user_drag_and_drop_object() {
+        WebElement from1 = driver.findElement(pageDrag.getFrom1());
+        WebElement to1 = driver.findElement(pageDrag.getTo1());
+        touch.longPress(longPressOptions().withElement(element(from1)).withDuration(ofSeconds(5))).moveTo(element(to1)).release().perform();
     }
 }

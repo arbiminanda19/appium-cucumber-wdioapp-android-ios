@@ -29,4 +29,9 @@ public class home extends env {
         driver.findElement(pageHome.getBtn_swipe()).click();
     }
 
+    @When("user access drag page")
+    public void user_access_drag_page() {
+        driver.findElement(pageHome.getBtn_drag()).click();
+    }
+
 }

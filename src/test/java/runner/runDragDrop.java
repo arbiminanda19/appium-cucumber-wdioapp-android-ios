@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/openJsFoundation.feature",
+        features = "src/test/resources/features/dragDrop.feature",
         glue = "stepDef",
         plugin = {"html:target/HTML_report.html"}
 )
-public class runOpenJsFoundation {
+public class runDragDrop {
 
 }

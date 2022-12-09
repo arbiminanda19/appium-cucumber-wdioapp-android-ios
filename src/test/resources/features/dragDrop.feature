@@ -1,7 +1,7 @@
-Feature: Open Js Foundation
+Feature: Drag n Drop
 
-  Scenario: Open Js Foundation
+  Scenario: Drag n Drop
 
     Given user is on app home
-    When user access swipe page
-    And user click on Js foundation menu
+    When user access drag page
+    And user drag and drop object
