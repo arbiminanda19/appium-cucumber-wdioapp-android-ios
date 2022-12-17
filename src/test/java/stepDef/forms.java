@@ -1,25 +1,44 @@
 package stepDef;
 
-import config.env;
+import api.baseUrl;
+import api.data;
 import io.cucumber.java.en.And;
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 import objects.pageForm;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+
+import static io.restassured.RestAssured.given;
 
 public class forms extends hooks {
 
     pageForm pageForm = new pageForm();
+
+    api.baseUrl ip = new baseUrl();
+    Response response;
+    data data = new data();
 
     @And("user fill input field")
     public void user_fill_input_field() {
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageForm.getTxt_input())
         );
-        String input = "testt";
+        RestAssured.baseURI = ip.getReqresAPI();
+        response = given()
+                .header("Content-Type", "application/json")
+                .body(data.createUsers().toJSONString())
+                .when()
+                .post("api/users")
+                .then()
+                .log().body()
+                .statusCode(201)
+                .extract().response();
+        String input = "";
+        input = response.getBody().path("name");
         String inputResult;
         driver.findElement(pageForm.getTxt_input()).sendKeys(input);
         inputResult = driver.findElement(pageForm.getTxt_inputResult()).getAttribute("text");
