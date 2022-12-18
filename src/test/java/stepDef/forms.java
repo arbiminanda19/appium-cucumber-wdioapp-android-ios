@@ -6,11 +6,11 @@ import objects.pageForm;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.swing.plaf.nimbus.State;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class forms extends env {
 
@@ -22,7 +22,17 @@ public class forms extends env {
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageForm.getTxt_input())
         );
-        String input = "testt";
+        String input = "";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/arbiminanda", "arbiminanda", "admin");
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT name FROM `user`;");
+            resultSet.next();
+            input = resultSet.getString("name");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         String inputResult;
         driver.findElement(pageForm.getTxt_input()).sendKeys(input);
         List <WebElement> txt_inputResult = driver.findElements(pageForm.getTxt_inputResult());
