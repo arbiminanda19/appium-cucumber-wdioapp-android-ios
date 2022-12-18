@@ -7,7 +7,6 @@ public class pageHome {
     By btn_swipe = By.xpath("//XCUIElementTypeButton[@name='Swipe']");
     By btn_form = By.xpath("//XCUIElementTypeButton[@name='Forms']");
 
-    By btn_home = By.xpath("//XCUIElementTypeButton[@name='Home']");
     By page_home = By.xpath("//XCUIElementTypeOther[@name='WEBDRIVER Demo app for the appium-boilerplate']");
 
     By btn_drag = By.xpath("//XCUIElementTypeButton[@name='Drag']");
@@ -28,7 +27,4 @@ public class pageHome {
         return btn_drag;
     }
 
-    public By getBtn_home() {
-        return btn_home;
-    }
 }
