@@ -1,6 +1,7 @@
 package stepDef;
 
 import config.env;
+import helper.dbConnection;
 import io.cucumber.java.en.And;
 import objects.pageForm;
 import org.junit.Assert;
@@ -17,22 +18,15 @@ public class forms extends env {
     pageForm pageForm = new pageForm();
     HashMap<String, Object> scrollObject = new HashMap<>();
 
+    dbConnection dbConnection = new dbConnection();
+
     @And("user fill input field")
     public void user_fill_input_field() {
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageForm.getTxt_input())
         );
-        String input = "";
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/arbiminanda", "arbiminanda", "admin");
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT name FROM `user`;");
-            resultSet.next();
-            input = resultSet.getString("name");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        String input = dbConnection.getUsername();
+
         String inputResult;
         driver.findElement(pageForm.getTxt_input()).sendKeys(input);
         List <WebElement> txt_inputResult = driver.findElements(pageForm.getTxt_inputResult());
