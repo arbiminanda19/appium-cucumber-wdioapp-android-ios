@@ -17,9 +17,9 @@ public class hooks extends env {
     public void before() throws MalformedURLException {
         capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", "iPhone SE (3rd generation)");
-        capabilities.setCapability("udid", "739B47C6-A478-4CD3-99A2-CC0CA0019BEC");
+        capabilities.setCapability("udid", "3F659EB6-2B34-4E01-A4BB-7137005A13F3");
         capabilities.setCapability("platformName", "iOS");
-        capabilities.setCapability("platformVersion", "15.4");
+        capabilities.setCapability("platformVersion", "16.2");
 //        capabilities.setCapability("app", "src/test/resources/app/wdioNativeDemoApp.app");
         capabilities.setCapability("bundleId", "org.wdioNativeDemoApp");
 
