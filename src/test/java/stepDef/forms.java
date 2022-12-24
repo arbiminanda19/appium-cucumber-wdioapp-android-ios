@@ -2,6 +2,7 @@ package stepDef;
 
 import api.baseUrl;
 import api.data;
+import helper.requestAPI;
 import io.cucumber.java.en.And;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -17,28 +18,14 @@ import static io.restassured.RestAssured.given;
 public class forms extends hooks {
 
     pageForm pageForm = new pageForm();
-
-    api.baseUrl ip = new baseUrl();
-    Response response;
-    data data = new data();
+    requestAPI requestAPI = new requestAPI();
 
     @And("user fill input field")
     public void user_fill_input_field() {
         wait.until(
                 ExpectedConditions.visibilityOfElementLocated(pageForm.getTxt_input())
         );
-        RestAssured.baseURI = ip.getReqresAPI();
-        response = given()
-                .header("Content-Type", "application/json")
-                .body(data.createUsers().toJSONString())
-                .when()
-                .post("api/users")
-                .then()
-                .log().body()
-                .statusCode(201)
-                .extract().response();
-        String input = "";
-        input = response.getBody().path("name");
+        String input = requestAPI.getUsername();
         String inputResult;
         driver.findElement(pageForm.getTxt_input()).sendKeys(input);
         inputResult = driver.findElement(pageForm.getTxt_inputResult()).getAttribute("text");
