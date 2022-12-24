@@ -9,8 +9,6 @@ public class dbConnection {
         String username = "";
 
         try {
-
-            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/arbiminanda", "arbiminanda", "admin");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT name FROM `user`;");
