@@ -39,6 +39,8 @@ public class forms extends env {
     @And("user change switch state")
     public void user_change_switch_state() {
         driver.findElement(pageForm.getBtn_switch()).click();
+        String status = driver.findElement(pageForm.getBtn_switch()).getAttribute("value");
+        Assert.assertTrue(Integer.valueOf(status) == 1);
         scrollObject.put("direction", "down");
         scrollObject.put("name", "button-Active");
         driver.executeScript("mobile:scroll", scrollObject);
